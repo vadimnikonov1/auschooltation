@@ -1,0 +1,10 @@
+{% extends 'quiz/heart_tones_q1.html' %}
+
+{% block q_form_options %}
+    {% for radio in q8_form.options %}
+        <div class="radiobtn">
+            {{ radio.tag }}
+            <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+        </div>
+    {% endfor %}
+{% endblock q_form_options %}

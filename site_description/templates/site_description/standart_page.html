@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+<head>
+    {% block title %}
+    <title>Bootstrap Example</title>
+    {% endblock title %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{% static 'site_description/assets/logo_round_hq_text.ico' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+{% endblock head %}
+
+<body>
+{% block navbar %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div class="container px-4 px-lg-5">
+    <!-- Brand -->
+    <a class="navbar-brand" href="{% url 'auschool-home' %}">Auschooltation</a>
+    <ul class="navbar-nav">
+    {% block navbar_links %}
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Меню
+            </a>
+                <div class="dropdown-menu">
+
+            {% if user.is_authenticated %}
+                 <!-- Dropdown -->
+                        <a class="dropdown-item" href="{% url 'profile' %}">Мой профиль</a>
+                        <a class="dropdown-item" href="{% url 'tests' %}">Тесты</a>
+                        <a class="dropdown-item" href="{% url 'theory' %}">Теория</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Выйти из аккаунта</a>
+            {% else %}
+                <!-- Dropdown -->
+                        <a class="dropdown-item" href="{% url 'registration_and_login' %}">Войти</a>
+                        <a class="dropdown-item" href="{% url 'registration_and_login' %}">Регистрация</a>
+            {% endif %}
+                </div>
+            </li>
+    {% endblock navbar_links %}
+    </ul>
+</div>
+</nav>
+{% endblock navbar %}
+<br>
+
+
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+    <h3>Navbar With Dropdown</h3>
+    <p>This example adds a dropdown menu in the navbar.</p>
+    {% endblock content %}
+</div>
+</body>
+</html>

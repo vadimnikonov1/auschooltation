@@ -1,0 +1,68 @@
+{% extends 'site_description/standart_page.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Lessons</title>
+{% endblock title %}
+
+
+{% block content %}
+
+    <h2>Тоны сердца. Норма</h2>
+
+    <h5 class="my-4">
+        Перед тем, как приступить к патологиям, давайте разберемся с нормой.
+        У здорового человека над всем сердцем выслушиваются I (систолический) и II (диастолический) тоны.
+        Перед Вами пример ФКГ здорового человека.
+    </h5>
+
+    <img src="{% static 'lessons/img/lesson_heart_norm/norm_fkg.png' %}" class="img-fluid" alt="heart norm fkg">
+
+    <h5 class="my-4">
+        С I тона начинается систола. В образовании первого тона принимают участие предсердия,
+        митральный и трикуспидальный клапаны, миокард желудочков, начальные отделы аорты и лёгочной артерии.
+        Однако больший вклад в формирование I тона вносят клапанный (схлопывание створок клапанов) и мышечный
+        (колебание стенок желудочков) компоненты.
+    </h5>
+
+    <img src="{% static 'lessons/img/lesson_heart_norm/norm_1_tone.png' %}" class="img-fluid" alt="norm 1 tone">
+
+    <h5 class="my-4">
+        II тон появляется в начале диастолы и состоит из клапанного
+        (звук закрытия аортального и лёгочного клапанов) и сосудистого
+        (колебание стенок начальных отделов аорты и лёгочной артерии) компонентов.
+    </h5>
+
+    <img src="{% static 'lessons/img/lesson_heart_norm/norm_2_tone.png' %}" class="img-fluid" alt="norm 2 tone">
+
+    <h5 class="my-4">
+        Звучность I и II тонов, в зависимости от точек аускультации, будет меняться.
+        I тон лучше слышен на верхушке сердца (<span style="color: red">1</span> и <span style="color: #3566FD">4</span> точки), над митральным клапаном I тон громче,
+        чем над трикуспидальным; II тон на основании сердца (<span style="color: #EE7C2D;">2</span> и <span style="color: #75D612">3</span> точки),
+        в норме громкость II тона над аортой и лёгочной артерией одинакова.
+    </h5>
+
+    <img src="{% static 'lessons/img/lesson_heart_norm/ausch_points_with_heart.jpg' %}" class="img-fluid" alt="ausch points">
+
+    <h5 class="my-4">
+        Прослушаем тоны сердца здорового человека на верхушке и основании.
+        Постарайтесь сконцентрироваться на акцентировании I или II тонов в зависимости от области сердца.
+    </h5>
+
+    <h4 class="my-2">Норма на верхушке сердца</h4>
+    <audio class="container-fluid my-2"
+           controls
+           src="{% static 'lessons/audio/norm_at_the_top.mp3' %}">
+    </audio>
+
+    <h4 class="my-2">Норма на основании сердца</h4>
+    <audio class="container-fluid my-2"
+           controls
+           src="{% static 'lessons/audio/aortic_norm.mp3' %}">
+    </audio>
+
+    <div class="text-right">
+        <a class="btn btn-success" href="{% url 'tests' %}" role="button">Проверить знания</a>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+    <title>Testing</title>
+    {% endblock title %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'site_description/assets/logo_round_hq_text.ico' %}" />
+
+
+    <link href="{% static 'quiz/css/quiz_cards.css' %}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div class="container px-4 px-lg-5">
+    <!-- Brand -->
+    <a class="navbar-brand" href="{% url 'auschool-home' %}">Auschooltation</a>
+    <ul class="navbar-nav">
+
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Меню
+            </a>
+                <div class="dropdown-menu">
+
+            {% if user.is_authenticated %}
+                 <!-- Dropdown -->
+                        <a class="dropdown-item" href="{% url 'profile' %}">Мой профиль</a>
+                        <a class="dropdown-item" href="{% url 'tests' %}">Тесты</a>
+                        <a class="dropdown-item" href="{% url 'theory' %}">Теория</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Выйти из аккаунта</a>
+            {% else %}
+                <!-- Dropdown -->
+                        <a class="dropdown-item" href="{% url 'registration_and_login' %}">Войти</a>
+                        <a class="dropdown-item" href="{% url 'registration_and_login' %}">Регистрация</a>
+            {% endif %}
+                </div>
+            </li>
+    </ul>
+</div>
+</nav>
+
+<div class="container-fluid">
+    <h3 class="my-4">Проверка знаний</h3>
+</div>
+
+<div class="container-fluid">
+    <div class="card-deck my-4">
+        <div class="card bg-card">
+            <img src="{% static 'quiz/img/heart-failure.jpg' %}" class="card-img-top img-fluid" alt="Heart tones">
+            <div class="card-body">
+                <h5 class="card-title text-white">Тоны сердца</h5>
+                <p class="card-text text-white">Проверка знаний по тонам сердца. 10 вопросов</p>
+                <a href="{% url 'heart_tones_q1' %}" class="btn btn-info stretched-link">Начать</a>
+            </div>
+        </div>
+        <div class="card bg-card">
+            <img src="{% static 'quiz/img/heart_murmur.jpg' %}" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-white">Шумы сердца</h5>
+                <p class="card-text text-white">В разработке...</p>
+                <a href="#" class="btn btn-info stretched-link">Начать</a>
+            </div>
+        </div>
+
+        <div class="card bg-card">
+            <img src="{% static 'quiz/img/lungs_sounds.jpg' %}" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-white">Типы дыхания</h5>
+                <p class="card-text text-white">В разработке...</p>
+                <a href="#" class="btn btn-info stretched-link">Начать</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

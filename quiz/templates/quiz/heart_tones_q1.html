@@ -1,0 +1,46 @@
+{% extends 'site_description/standart_page.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+<head>
+    {% block title %}
+    <title>Heart tones</title>
+    {% endblock title %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'site_description/assets/logo_round_hq_text.ico' %}" />
+    <link href="{% static 'quiz/css/q_forms.css' %}" rel="stylesheet" />
+</head>
+{% endblock head %}
+
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+
+            <div class="text-center my-3">
+                <h5>{{ question.question_text }}</h5>
+                <audio class="container-fluid my-2"
+                    controls
+                    src="{{ question.question_audio.url }}">
+                </audio>
+
+            </div>
+        {% block q_form_options %}
+            {% for radio in q1_form.options %}
+                <div class="radiobtn">
+                    {{ radio.tag }}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                </div>
+            {% endfor %}
+        {% endblock q_form_options %}
+    <button type="submit" class="btn btn-outline-success float-lg-right my-2">Next</button>
+    </form>
+{% endblock content %}
